@@ -1,0 +1,30 @@
+ <h1>
+  List of all actors
+</h1>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Dob</th>
+    <th></th>
+  </tr>
+  <% @actors.each do |actor| %>
+    <tr>
+      <td><%= actor.id %></td>
+      <td>
+        <% if actor.image.present? %>
+          <%= image_tag(actor.image, alt: actor.name, height: "100") %>
+        <% else %>
+          No Image
+        <% end %>
+      </td>
+      <td><%= actor.name %></td>
+      <td><%= actor.dob %></td>
+      <td>
+        <a href="/actors/<%= actor.id %>">Show details</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
